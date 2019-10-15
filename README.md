@@ -11,6 +11,7 @@ Per eseguire l'applicazione:
       5) leggere il QRCode 
 	  
 Per eseguire il backend in python3:
+
       1) pip3 install flask
       2) python3 server.py
       
