@@ -34,10 +34,6 @@ export class Home extends Component {
         return fetch('http://192.168.1.9:5000', {
 
           method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            },
           body: JSON.stringify({
             input: input,
           }),
