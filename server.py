@@ -58,7 +58,7 @@ def metodi():
     if request.json:
         inpt = request.json['input']
         print(inpt)
-
+        inpt.lower()
         if inpt[:3] == 'mcd':
             try:
                 inpt.replace(' ', '')
