@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default class MaterialHeader1 extends Component {
   render() {
@@ -10,13 +9,11 @@ export default class MaterialHeader1 extends Component {
           style={{
             flexDirection: "row",
             marginLeft: 5,
-            marginTop: 5,
+            marginTop: '10%',
             marginBottom: 5
           }}
         >
-          <TouchableOpacity style={styles.leftIconButton}>
-            <MaterialCommunityIconsIcon name="menu" style={styles.leftIcon} />
-          </TouchableOpacity>
+
           <View style={styles.textWrapper}>
             <Text numberOfLines={1} style={styles.title}>
               Metodi
@@ -29,12 +26,7 @@ export default class MaterialHeader1 extends Component {
             flexDirection: "row"
           }}
         />
-        <TouchableOpacity style={styles.rightIconButton}>
-          <MaterialCommunityIconsIcon
-            name="dots-vertical"
-            style={styles.rightIcon}
-          />
-        </TouchableOpacity>
+
       </View>
     );
   }
@@ -56,15 +48,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
     shadowRadius: 1
   },
-  leftIconButton: {
-    padding: 11
-  },
-  leftIcon: {
-    backgroundColor: "transparent",
-    color: "#FFFFFF",
-    fontFamily: "roboto-regular",
-    fontSize: 24
-  },
+
   textWrapper: {
     alignSelf: "flex-end",
     marginLeft: 21,
@@ -76,16 +60,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 18
   },
-  rightIconButton: {
-    alignItems: "center",
-    padding: 11,
-    marginRight: 5,
-    marginTop: 5
-  },
-  rightIcon: {
-    backgroundColor: "transparent",
-    color: "#FFFFFF",
-    fontFamily: "roboto-regular",
-    fontSize: 24
-  }
+
 });
