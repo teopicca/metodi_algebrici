@@ -1,0 +1,16 @@
+App per metodi algebrici.
+
+
+Ancora in fase di sviluppo. 
+Per eseguire l'applicazione:
+      1) npm -i
+      2) expo start
+      3) installare Expo sullo smartphone
+      3) leggere il QRCode 
+      
+Per eseguire il backend in python3:
+      1) pip3 install flask
+      2) python3 server.py
+      
+      
+NOTE: Potrebbe essere necessario fare il forwarding della porta 5000 (porta usata da Flask per lo sviluppo)
