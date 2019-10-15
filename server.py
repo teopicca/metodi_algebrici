@@ -60,40 +60,45 @@ def metodi():
         print(inpt)
 
         if inpt[:3] == 'mcd':
-            inpt.replace(' ', '')
-            open = inpt.find('(')
-            close = inpt.find(')')
-            comma = inpt.find(',')
-            x = int(inpt[open+1 :comma])
-            y = int(inpt[comma+1 : close])
+            try:
+                inpt.replace(' ', '')
+                open = inpt.find('(')
+                close = inpt.find(')')
+                comma = inpt.find(',')
+                x = int(inpt[open+1 :comma])
+                y = int(inpt[comma+1 : close])
 
-            print(x, y)
+                print(x, y)
+          
+                result = euclide(x, y)
+                return jsonify(status = 200, type = 'mcd', result = result)
             
-
-            result = euclide(x, y)
-            return jsonify(status = 200, type='mcd', result=result)
+            except:
+                return jsonify(status = 200, type = 'error')
 
    
         if inpt[:3] == 'dio':
-            inpt = inpt.replace(' ', '')
-            open = inpt.find('(')
-            close = inpt.find(')')
-            x1 = inpt.find('x')
-            y1 = inpt.find('y')
-            equal = inpt.find('=')
+            try:
+                inpt = inpt.replace(' ', '')
+                open = inpt.find('(')
+                close = inpt.find(')')
+                x1 = inpt.find('x')
+                y1 = inpt.find('y')
+                equal = inpt.find('=')
 
-            x = int(inpt[open+1: x1])
-            y = int(inpt[x1+1 : y1])
-            c = int(inpt[equal+1 : close])
-            print(x,y,c)
-            (x,y, xk, yk) = diofantea(x, y, c)
-            print(x,y, xk, yk)
-            
-            return jsonify(status=200, type= 'dio', x=x, y=y, xk=xk, yk=yk)
+                x = int(inpt[open+1: x1])
+                y = int(inpt[x1+1 : y1])
+                c = int(inpt[equal+1 : close])
+                print(x,y,c)
+                (x,y, xk, yk) = diofantea(x, y, c)
+                print(x,y, xk, yk)
+                
+                return jsonify(status = 200, type = 'dio', x = x, y = y)
 
+            except:
+                return jsonify(status = 200, type = 'error')
 
-
-        return jsonify(status=500, type = None, result=None)
+        return jsonify(status=500, type = None)
 
 
 if __name__ == '__main__':
