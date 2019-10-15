@@ -3,11 +3,13 @@ App per metodi algebrici.
 
 Ancora in fase di sviluppo. 
 Per eseguire l'applicazione:
+
       1) npm -i
-      2) expo start
-      3) installare Expo sullo smartphone
-      3) leggere il QRCode 
-      
+	  2) installare expo 
+      3) expo start
+      4) installare Expo sullo smartphone
+      5) leggere il QRCode 
+	  
 Per eseguire il backend in python3:
       1) pip3 install flask
       2) python3 server.py
