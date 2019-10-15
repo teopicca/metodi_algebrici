@@ -4,8 +4,8 @@ App per metodi algebrici.
 Ancora in fase di sviluppo. 
 Per eseguire l'applicazione:
 
-      1) npm -i
-	  2) installare expo 
+      1) npm i expo
+	2) npm i  
       3) expo start
       4) installare Expo sullo smartphone
       5) leggere il QRCode 
