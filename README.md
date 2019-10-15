@@ -16,4 +16,4 @@ Per eseguire il backend in python3:
       2) python3 server.py
       
       
-NOTE: Potrebbe essere necessario fare il forwarding della porta 5000 (porta usata da Flask per lo sviluppo)
+NOTE: Potrebbe essere necessario fare il forwarding della porta 5000 (porta usata da Flask per lo sviluppo), e modificare il file '/src/screens/Home.js' a riga 34 con l'IP della macchina server. 
