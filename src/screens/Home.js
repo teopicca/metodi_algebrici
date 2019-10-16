@@ -45,31 +45,35 @@ export class Home extends Component {
         .then((response) => response.json())
         .then((responseJson) => {
           if(responseJson.status===200){
-                if(responseJson.type === 'mcd'){
-                  this.setState({result:responseJson.result})
-                }
-                if(responseJson.type ==='dio'){
-                  if(responseJson.solution){
-                    this.setState({result: ['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y, '\n \n',
-                                            'Xk: ', responseJson.xk, '   :    ','Yk: ', responseJson.yk]})
+
+                  switch (responseJson.type) {
+                    case 'mcd':
+                    this.setState({result:responseJson.result})
+                    break;
+
+                    case 'dio':
+                      if(responseJson.solution){
+                        this.setState({result: ['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y, '\n \n',
+                                                'Xk: ', responseJson.xk, '   :    ','Yk: ', responseJson.yk]})
+                      }
+                      else{
+                        this.setState({result:'No solution'})
+                      }
+                      break;
+
+                    case 'phi':
+                      this.setState({result: responseJson.result})
+                      break;
+
+                    case 'bz':
+                      this.setState({result: ['t: ',responseJson.s, '   ;   ', 's: ',responseJson.t]})
+                      break;
+
+                    case 'error':
+                        Alert.alert('Wrong input')
+                        break;
                   }
-                  else{
-                    this.setState({result:'No solution'})
-                  }
                 }
-                if(responseJson.type === 'phi'){
-                  this.setState({result: responseJson.result})
-                }
-
-                if(responseJson.type === 'bz'){
-                  this.setState({result: ['t: ',responseJson.s, '   ;   ', 's: ',responseJson.t]})
-                }
-
-
-                if(responseJson.type === 'error'){
-                  Alert.alert('Wrong input')
-                }
-              }
 
           if(responseJson.status === 500){
             Alert.alert('Wrong input')
