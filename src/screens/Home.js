@@ -50,7 +50,8 @@ export class Home extends Component {
                 }
                 if(responseJson.type ==='dio'){
                   if(responseJson.solution){
-                    this.setState({result:['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y]})
+                    this.setState({result: ['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y, '\n \n',
+                                            'Xk: ', responseJson.xk, '   :    ','Yk: ', responseJson.yk]})
                   }
                   else{
                     this.setState({result:'No solution'})

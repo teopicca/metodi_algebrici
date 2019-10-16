@@ -44,7 +44,11 @@ def diofantea(a, b, c, mcd):
         y = y * (c/mcd)
         xk = b / mcd 
         yk = a / mcd
+        xk = "{0} + {1}k".format(x, xk)
+        yk = "{0} - {1}k".format(y, yk)  
+
         return (x,y, xk, yk)
+
   
 def phi(n):
     phi = 0
@@ -57,12 +61,6 @@ def phi(n):
 
 
 
-
-
-
-
-
-
 @app.route('/', methods=['GET', 'POST'])
 def metodi():
 
@@ -70,7 +68,7 @@ def metodi():
         inpt = request.json['input']
         print(inpt)
         inpt = inpt.lower()
-        inpt.replace(' ', '')
+        intp = inpt.replace(' ', '')
         if inpt[:3] == 'mcd':
             try:
                 open = inpt.find('(')
@@ -106,7 +104,7 @@ def metodi():
                 if c%mcd == 0:
                     (x,y, xk, yk) = diofantea(x, y, c, mcd)
                     print(x,y, xk, yk)
-                    return jsonify(status = 200, type = 'dio', solution = True, x = x, y = y)
+                    return jsonify(status = 200, type = 'dio', solution = True, x = x, y = y, xk = xk, yk = yk)
                 
                 else:
                     print('no solution')
