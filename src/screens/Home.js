@@ -56,6 +56,12 @@ export class Home extends Component {
                     this.setState({result:'No solution'})
                   }
                 }
+                if(responseJson.type === 'phi'){
+                  this.setState({result: responseJson.result})
+                }
+                if(responseJson.type === 'error'){
+                  Alert.alert('Wrong input')
+                }
               }
 
           if(responseJson.status === 500){

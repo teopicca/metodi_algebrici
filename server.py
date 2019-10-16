@@ -46,6 +46,22 @@ def diofantea(a, b, c, mcd):
         yk = a / mcd
         return (x,y, xk, yk)
   
+def phi(n):
+    phi = 0
+    for i in range(1,n):
+        mcd = euclide(n,i)
+        if mcd == 1:
+            phi+=1
+
+    return phi
+
+
+
+
+
+
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def metodi():
@@ -54,10 +70,9 @@ def metodi():
         inpt = request.json['input']
         print(inpt)
         inpt = inpt.lower()
-
+        inpt.replace(' ', '')
         if inpt[:3] == 'mcd':
             try:
-                inpt.replace(' ', '')
                 open = inpt.find('(')
                 close = inpt.find(')')
                 comma = inpt.find(',')
@@ -75,7 +90,6 @@ def metodi():
         if inpt[:3] == 'dio':
             
             try:
-                inpt = inpt.replace(' ', '')
                 open = inpt.find('(')
                 close = inpt.find(')')
                 x1 = inpt.find('x')
@@ -101,6 +115,25 @@ def metodi():
             except:
                 return jsonify(status = 200, type = 'error')
 
+        if inpt[:3] == 'phi':
+            
+            try:
+                open = inpt.find('(')
+                close = inpt.find(')')
+                n = int(inpt[open+1 : close])
+                print(n)
+
+                p = phi(n)
+                print(p)             
+                return jsonify(status=200, type = 'phi', result=p)
+            
+            except:
+                return jsonify(status=200, type = 'error') 
+
+
+
+
+    
     return jsonify(status=500, type = None)
 
 
@@ -108,4 +141,5 @@ if __name__ == '__main__':
     
             
         app.run(host='0.0.0.0', debug=True)
+
 
