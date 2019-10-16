@@ -22,6 +22,7 @@ NOTE: Potrebbe essere necessario fare il forwarding della porta 5000 (porta usat
 
 
 FUNZIONI IMPLEMENTATE:
+
 	1) MCD tra due numeri --> mcd(n1, n2)
 	2) risoluzione equazioni diofantee --> dio(ax+by=c)
 	3) calcolo della funzione phi di Eulero --> phi(n)
