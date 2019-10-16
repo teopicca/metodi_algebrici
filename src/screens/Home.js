@@ -34,6 +34,10 @@ export class Home extends Component {
         return fetch('http://192.168.1.9:5000', {
 
           method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
           body: JSON.stringify({
             input: input,
           }),
@@ -45,7 +49,12 @@ export class Home extends Component {
                   this.setState({result:responseJson.result})
                 }
                 if(responseJson.type ==='dio'){
-                  this.setState({result:[responseJson.x, '   ', responseJson.y]})
+                  if(responseJson.solution){
+                    this.setState({result:[responseJson.x, '   ', responseJson.y]})
+                  }
+                  else{
+                    this.setState({result:'No solution'})
+                  }
                 }
               }
 

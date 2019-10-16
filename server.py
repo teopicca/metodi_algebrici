@@ -37,20 +37,15 @@ def bezout(a, b):
 
 
 
-def diofantea(a, b, c):
+def diofantea(a, b, c, mcd):
     
-    mcd = euclide(a,b)
-    if c%mcd == 0:
-            (x,y) = bezout(a,b)
-            x = x * (c/mcd)
-            y = y * (c/mcd)
-            xk = b / mcd 
-            yk = a / mcd
-            return (x,y, xk, yk)
-    else:
-        return False
+        (x,y) = bezout(a,b)
+        x = x * (c/mcd)
+        y = y * (c/mcd)
+        xk = b / mcd 
+        yk = a / mcd
+        return (x,y, xk, yk)
   
-     
 
 @app.route('/', methods=['GET', 'POST'])
 def metodi():
@@ -58,7 +53,8 @@ def metodi():
     if request.json:
         inpt = request.json['input']
         print(inpt)
-        inpt.lower()
+        inpt = inpt.lower()
+
         if inpt[:3] == 'mcd':
             try:
                 inpt.replace(' ', '')
@@ -74,10 +70,10 @@ def metodi():
                 return jsonify(status = 200, type = 'mcd', result = result)
             
             except:
-                return jsonify(status = 200, type = 'error')
-
+                return jsonfify(status=200, type= 'error')
    
         if inpt[:3] == 'dio':
+            
             try:
                 inpt = inpt.replace(' ', '')
                 open = inpt.find('(')
@@ -90,20 +86,26 @@ def metodi():
                 y = int(inpt[x1+1 : y1])
                 c = int(inpt[equal+1 : close])
                 print(x,y,c)
-                (x,y, xk, yk) = diofantea(x, y, c)
-                print(x,y, xk, yk)
+
+                mcd = euclide(x,y)
+
+                if mcd % c == 0:
+                    (x,y, xk, yk) = diofantea(x, y, c, mcd)
+                    print(x,y, xk, yk)
+                    return jsonify(status = 200, type = 'dio', solution = True, x = x, y = y)
                 
-                return jsonify(status = 200, type = 'dio', x = x, y = y)
+                else:
+                    print('no solution')
+                    return jsonify(status = 200, type = 'dio', solution = False)
 
             except:
                 return jsonify(status = 200, type = 'error')
 
-        return jsonify(status=500, type = None)
+    return jsonify(status=500, type = None)
 
 
 if __name__ == '__main__':
     
             
         app.run(host='0.0.0.0', debug=True)
-
 
