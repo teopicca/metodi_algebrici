@@ -50,7 +50,7 @@ export class Home extends Component {
                 }
                 if(responseJson.type ==='dio'){
                   if(responseJson.solution){
-                    this.setState({result:[responseJson.x, '   ', responseJson.y]})
+                    this.setState({result:['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y]})
                   }
                   else{
                     this.setState({result:'No solution'})
@@ -59,6 +59,12 @@ export class Home extends Component {
                 if(responseJson.type === 'phi'){
                   this.setState({result: responseJson.result})
                 }
+
+                if(responseJson.type === 'bz'){
+                  this.setState({result: ['t: ',responseJson.s, '   ;   ', 's: ',responseJson.t]})
+                }
+
+
                 if(responseJson.type === 'error'){
                   Alert.alert('Wrong input')
                 }
