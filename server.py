@@ -103,7 +103,7 @@ def metodi():
 
                 mcd = euclide(x,y)
 
-                if mcd % c == 0:
+                if c%mcd == 0:
                     (x,y, xk, yk) = diofantea(x, y, c, mcd)
                     print(x,y, xk, yk)
                     return jsonify(status = 200, type = 'dio', solution = True, x = x, y = y)
@@ -129,6 +129,27 @@ def metodi():
             
             except:
                 return jsonify(status=200, type = 'error') 
+
+
+        if inpt[:2] == 'bz':
+            
+            try:
+                open = inpt.find('(')
+                close = inpt.find(')')
+                comma = inpt.find(',')
+                a = int(inpt[open+1 :comma])
+                b = int(inpt[comma+1 : close])
+                
+                (s, t) = bezout(a, b)
+                print(s,t)
+                
+                return jsonify(status=200, type='bz', s=s, t = t)
+            
+            except:
+
+                return jsonify(status=200, type='error')
+
+
 
 
 
