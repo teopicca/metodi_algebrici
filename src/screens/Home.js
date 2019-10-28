@@ -31,7 +31,7 @@ export class Home extends Component {
 
   submit() {
         const input = this.state.input
-        return fetch('http://192.168.1.9:5000', {
+        return fetch('http://192.168.0.111:5000', {
 
           method: 'POST',
           headers: {
@@ -53,8 +53,8 @@ export class Home extends Component {
 
                     case 'dio':
                       if(responseJson.solution){
-                        this.setState({result: ['X: ', responseJson.x, '   ;   ', 'Y: ',responseJson.y, '\n \n',
-                                                'Xk: ', responseJson.xk, '   :    ','Yk: ', responseJson.yk]})
+                        this.setState({result: ['X: ', responseJson.sol.x, '   ;   ', 'Y: ',responseJson.sol.y, '\n \n',
+                                                'Xk: ', responseJson.sol.xk, '   :    ','Yk: ', responseJson.sol.yk]})
                       }
                       else{
                         this.setState({result:'No solution'})

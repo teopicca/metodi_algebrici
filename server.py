@@ -4,7 +4,6 @@ app = Flask(__name__)
 
 
 
-
 def euclide(x, y):
     
     while(y!=0):
@@ -61,6 +60,35 @@ def phi(n):
 
 
 
+#congruent linear system data structure -> {'n': [n1, n2, ... nk], 'mod' : [mod1, mod2, ... modk]}
+
+def chinese_remainder_theorem(system):
+    
+    #TODO: Chinese Remainder Theorem.  
+
+"
+    l = len(system[0]['n'])
+    #N
+    Nk = {}
+    for i in l:
+        N = system[0]['n'][i]
+        N_k['N'] = N
+    #N_i
+    for i in l:
+        n_i = system[0]['n'][
+        N_k['N'+ i] = n_i
+   
+     
+          
+    for i in l:
+ "       
+
+
+
+
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def metodi():
 
@@ -102,9 +130,10 @@ def metodi():
                 mcd = euclide(x,y)
 
                 if c%mcd == 0:
-                    (x,y, xk, yk) = diofantea(x, y, c, mcd)
-                    print(x,y, xk, yk)
-                    return jsonify(status = 200, type = 'dio', solution = True, x = x, y = y, xk = xk, yk = yk)
+                    (x,y, xk, yk) = diofantea(x, y, c, mcd) 
+                    solution = {'x': x, 'y': y,  'xk' : xk, 'yk' : yk}
+                    print(solution)
+                    return jsonify(status = 200, type = 'dio', solution = True, sol = solution)
                 
                 else:
                     print('no solution')
